@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   
   has_attached_file :image, :styles => {:medium => "150x150>", :thumb => "100x100>", :icon => "75x75>"}
   
-  validates_presence_of :name, :platform_id, :age_category_id, :quantity
+  validates_presence_of     :name, :platform_id, :age_category_id, :quantity
   validates_uniqueness_of :name, :case_sensitive => false
   validates_numericality_of :quantity, :greater_than_or_equal_to => 0,
                                        :unless => Proc.new{|i| i.quantity.blank?}
@@ -32,27 +32,7 @@ class Game < ActiveRecord::Base
                                     :content_type => ['image/jpeg','image/png','image/jpg','image/gif'],
                                     :message => 'has invalid format. You can upload images with .gif, .jpg or .png format' 
 
-  # def validate
-  #     arr = []
-  #     Category.all.collect { |x| arr << x.id }
-  #     errors.add_to_base("Category can't be blank") if (categories.size.zero?)
-  #     errors.add_to_base("Category is not included in the list") if !(category_ids.collect {|x| arr.include?(x)}) && !categories.size.zero?
-  #   end
-  
-  # def validate
-  #   all_categories_ids = Category.all.collect{|c| c.id}
-  #   errors.add_to_base("Category can't be blank") if category_ids.blank?
-  #   unless category_ids.blank?
-  #     category_ids.each do |c|
-  #       unless all_categories_ids.include?(c)
-  #         debugger
-  #         errors.add_to_base("Category is not included in the list")
-  #         break
-  #       end
-  #     end
-  #   end
-  # end
-  
+
   def validate
     errors.add_to_base("Category can't be blank") if categories.blank?
   end
@@ -76,7 +56,7 @@ class Game < ActiveRecord::Base
 
   def self.browse_by_platform(platform)  
     case platform
-      when 'PS3';then  Game.ps3 
+      when 'PS3'    ;then  Game.ps3 
       when 'Xbox360';then Game.xbox360 
     end
   end
@@ -100,3 +80,28 @@ class Game < ActiveRecord::Base
   end 
 
 end
+
+
+  #-----------------------------------------------------------------------------------------------------------------
+  # def validate
+  #     arr = []
+  #     Category.all.collect { |x| arr << x.id }
+  #     errors.add_to_base("Category can't be blank") if (categories.size.zero?)
+  #     errors.add_to_base("Category is not included in the list") if !(category_ids.collect {|x| arr.include?(x)}) && !categories.size.zero?
+  #   end
+  
+  # def validate
+  #   all_categories_ids = Category.all.collect{|c| c.id}
+  #   errors.add_to_base("Category can't be blank") if category_ids.blank?
+  #   unless category_ids.blank?
+  #     category_ids.each do |c|
+  #       unless all_categories_ids.include?(c)
+  #         debugger
+  #         errors.add_to_base("Category is not included in the list")
+  #         break
+  #       end
+  #     end
+  #   end
+  # end
+  #-----------------------------------------------------------------------------------------------------------------
+  

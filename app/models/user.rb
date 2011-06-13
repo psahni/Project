@@ -2,13 +2,29 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   
-  has_many :games_users, :dependent => :destroy
-  has_many :shortlisted_games, :through => :games_users, :source => :game, :conditions => ["status = ?", RENTING_STATUS[:shortlisted]]
-  has_many :notified_games, :through => :games_users, :source => :game, :conditions => ["status = ?", RENTING_STATUS[:notified]]
-  has_one :grabbed_game, :through => :games_users, :source => :game, :conditions => ["status = ?", RENTING_STATUS[:grabbed]]
-  has_one :rented_game, :through => :games_users, :source => :game, :conditions => ["status = ?", RENTING_STATUS[:rented]]
-  has_many :subscribed_games, :through => :games_users, :source => :game, :conditions => ["status = ?", RENTING_STATUS[:subscribed]]
+    has_many :games_users,       :dependent => :destroy
+    has_many :shortlisted_games, :through => :games_users, 
+                                 :source => :game, 
+                                 :conditions => ["status = ?", RENTING_STATUS[:shortlisted]]
+    has_many :notified_games,    :through => :games_users, 
+                                 :source => :game, 
+                                 :conditions => ["status = ?", RENTING_STATUS[:notified]]
+    has_one  :grabbed_game,      :through => :games_users, 
+                                 :source => :game, 
+                                 :conditions => ["status = ?", RENTING_STATUS[:grabbed]]
+                                 
+   has_one :rented_game,        :through => :games_users, 
+                                :source => :game, 
+                                :conditions => ["status = ?", RENTING_STATUS[:rented]]
+   has_many :subscribed_games,  :through => :games_users, 
+                                :source => :game, 
+                                :conditions => ["status = ?", RENTING_STATUS[:subscribed]]
+                              
   has_many :games, :through => :games_users, :uniq => true
+  
+  has_many :favorite_games_users
+  has_many :favorite_games, :through => :favorite_games_users, :source => :game, :foreign_key => :favorite_game_id
+  
   has_many :subscription_renewals
   named_scope :active, :conditions => {:is_active => 1}
   
