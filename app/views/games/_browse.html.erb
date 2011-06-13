@@ -1,0 +1,26 @@
+<div id="games_listing">
+  <p>Games Listing</p>
+</div>
+<div class="pagi">
+<%= will_paginate games %>
+<div id="pagination_show" >	<%= browse_games(params[:cat]) %></div>
+</div>
+<%if games.any?%>
+	<% games.each do |game| %>
+	<div class="one_col">
+    <div class="one_col_top">&nbsp;</div>
+    <div class="one_col_content games">
+		  <%=render :partial => 'admin/games/default_pic_index' ,:locals => {:game => game}%>
+		  <p class="game_title"><%= link_to truncate(h(game.name),:length => 35),game_path(game) %></p>
+		  <p class="description"> <%= render :partial => 'admin/games/game_desc',:locals => {:game => game, :len => 120} %></p>
+		  <p class="category_platform"><%= Platform.find_by_id(game.platform_id).name %> | <%= game.find_categories%></p>
+		
+		  <p class="button"> <%= button_availability(game) %></p>
+	  </div>
+    <div class="one_col_bottom">&nbsp;</div>
+    </div>
+	<%end%>
+<%else%>
+No record found.
+<%end%>
+<%= will_paginate games %>

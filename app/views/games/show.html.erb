@@ -1,0 +1,35 @@
+<div class="one_col">
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">  
+    <div class="game_show">  
+      <h3><%=h (@game.name)%></h3>	
+      <div id="game_show_left">
+        <div id="game_show_image">
+
+          <%unless @game.image_file_name.blank? %>
+          <span id="the_image"><%= image_tag(@game.image.url(:medium)) %></span>
+          <% else %>
+          <span id="the_image"><%= image_tag("default_medium.jpg")%></span>
+          <% end %>
+        </div> 
+
+        <div id="game_label"> 	
+          <%= button_availability(@game) %>
+        </div>
+      </div>     
+
+      <div id="game_show_right">
+        <div class="game_info">
+          <p class="category_platform"><%= Platform.find_by_id(@game.platform_id).name %> | <%= @game.find_categories %> </p>
+          <p id="desc"><%=h @game.description %></p>		
+
+        </div>	
+      </div>  
+    </div>
+
+
+  </div>
+  <div class="one_col_bottom">&nbsp;</div>
+</div>
+
+

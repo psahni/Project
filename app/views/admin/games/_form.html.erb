@@ -1,0 +1,70 @@
+<script type="text/javascript">
+	var box2;
+	    var box1;
+
+	    function generateRef(b1,b2)
+	    {
+	        box1=document.getElementById(b1);
+	        box2=document.getElementById(b2);
+
+
+	    }
+	    function appendOne(to,from)
+	    {
+
+	        generateRef(to,from);
+	        if(box1.options.selectedIndex<0)
+	            return false;
+	        var val_box1=box1.options[box1.selectedIndex].value;
+	        var text_box1=box1.options[box1.selectedIndex].text;
+	        //appends options from box1 to box2
+	        box2.options[box2.options.length]=new Option(text_box1,val_box1,false,false);
+	        //removes options from box1
+	        box1.options[box1.selectedIndex]=null;
+
+	    }
+	
+</script>
+<%form_for [:admin, @game], :html => {:multipart => true}  do |f|%>
+    <%= f.error_messages%>
+<p>	
+	<%=f.label "Name:"%>
+	<%=f.text_field :name%>
+</p>	
+
+<p>
+	<%=f.label "Description:"%>
+	<%=f.text_area :description, :rows => 5, :cols => 23%>
+</p>
+
+<p>
+	<%=f.label "Platform:"%>
+	<%=f.select :platform_id, Platform.all.map{|p| [p.name,p.id]},:prompt => "--Select--"%>
+</p>
+
+<p>
+	<%=f.label "Category:"%>
+	<%= f.collection_select :category_ids, Category.all, :id, :name, { :prompt => true}, {:multiple => true, :size => 5, :id => "box1"} -%>
+	
+		<!-- <input type="button" value="Move Right" onclick="appendOne('box1','box2');return false;" /><br/><input type="button" value="Move Left" onclick="appendOne('box2','box1');return false;" />
+				 
+			<%#= f.collection_select :category_ids, Category.all, :id, :name, { :selected => :category_ids}, {:multiple => true, :size => 5, :id => "box2"} -%> -->
+</p>
+
+<p>
+	<%=f.label "Age Category:"%>
+	<%=f.select :age_category_id, AgeCategory.all.map{|p| [p.name,p.id]}, :prompt => "--Select--"%>
+</p>
+
+<p>	
+	<%=f.label "Quantity:"%>
+	<%=f.text_field :quantity%>
+</p>
+
+<p>
+	<%=f.label "Upload Image:"%>
+	<%=f.file_field :image%>
+</p>
+<p id="submit_buttons"><%= f.submit button_text %> | <%= link_to 'Cancel', path_to_redirect %></p>
+
+<% end %>

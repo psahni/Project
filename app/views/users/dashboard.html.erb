@@ -1,0 +1,54 @@
+<div class="one_col">
+  <div class="two_col rented_games">
+    <div class="two_col_top">&nbsp;</div>
+    <div class="two_col_content">
+
+      <h5>Rented game:</h5>  
+        <%if current_user.rented_game%>
+         <div class="dashboard_game_image"> <%=image_tag current_user.rented_game.image.url(:thumb) %></div>
+        <p class="dashboard_game_name"> <%=link_to current_user.rented_game.name,game_path(current_user.rented_game)%></p>
+          <p class="other_content"><label>Rented On:</label><%= rented_on_time(current_user.rented_game, current_user) %></p>
+        <%else%>
+          There is no rented game.
+        <%end%>
+    
+    </div>   
+    <div class="two_col_bottom">&nbsp;</div>
+  </div>
+  <div class="two_col grabbed_game">
+    <div class="two_col_top">&nbsp;</div>
+    <div class="two_col_content">
+
+      <h5>Grabbed game:</h5>
+      <% if current_user.grabbed_game %>
+        <div class="dashboard_game_image"><%=link_to image_tag(current_user.grabbed_game.image.url(:thumb)),game_path(current_user.grabbed_game)%></div>
+      <p class="dashboard_game_name"><%=link_to current_user.grabbed_game.name,game_path(current_user.grabbed_game)%></p>
+      <p class="other_content"><label>Grabbed On:</label><%= grabbed_on_time(current_user.grabbed_game, current_user) %></p>
+     
+      <%else%>
+     There is no grabbed game.
+      <%end%>
+    </div>   
+    <div class="two_col_bottom">&nbsp;</div>
+  </div>
+</div>
+<div class="one_col">
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content shortlisted_games">
+    <h5>Shortlisted games:</h5>
+    <% unless current_user.shortlisted_games.blank?%>
+    <%current_user.shortlisted_games.each do |sgame| %>
+    <div id = "game_<%=sgame.id%>" class="shortlisted_games_list">
+      <p><%=link_to sgame.name, game_path(sgame)%>
+       <%=link_to image_tag("cross.png",:size => "13x13",
+        :alt => "delete",:title => "delete"),
+        remove_shortlisted_game_game_path(sgame.id)%></p>
+      <div class="dashboard_game_image"><%=link_to (image_tag sgame.image.url(:icon)), game_path(sgame) %></div>
+    </div>
+    <%end%>
+    <%else%>
+    There is no shortlisted game.
+    <%end%>
+  </div>   
+  <div class="one_col_bottom">&nbsp;</div>
+</div>

@@ -1,0 +1,6 @@
+#Mon Nov 16 19:15:27 IST 2009
+com.aptana.ide.intro.INTRO_TOOLBAR_IMAGE_LOCATION=http\://www.aptana.com/tools/radrails/images/my_radrails.gif
+com.aptana.ide.intro.SHOW_STARTPAGE_FORCED=true
+com.aptana.ide.intro.INTRO_EDITOR_ID=com.aptana.radrails.MyRadRailsEditor
+eclipse.preferences.version=1
+com.aptana.ide.intro.IS_PORTAL_SHOWN_PREVIOUSLY=true

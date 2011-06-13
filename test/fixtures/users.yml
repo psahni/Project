@@ -1,0 +1,141 @@
+quentin:
+  id:                        1
+  name:                      quentin   
+  email:                     quentin@example.com
+  dob:                       <%= Date.today %>
+  salt:                      477e076313221c2bb8930b2c7d3a29993c1cb95a 
+  crypted_password:          4ae9e21a8f0c68c1ad0af495cfe677eb21100b28
+  phone:                     9234234234
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  is_active:                 true
+  reset_code:                56cff93ca673b50e4392cc7d2f515941217d070f
+  identification_token:      bz2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  subscribed_on:             <%= Date.today - 21 %>
+      
+aaron:
+  id:                        2
+  name:                      aaron   
+  email:                     aaron@example.com
+  dob:                       <%= Date.today %>
+  salt:                      8a2bcd8e5e6e18f292919b167d410db7443b8543
+  crypted_password:          810a3f64fbb12309fb71cf48e2ac2ccf8c1fda22
+  phone:                     9234234234
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  is_active:                 false
+  reset_code:                56cff93ca673b50e4392cc7d2f515941217d070f
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  
+singh:
+  id:                        3
+  name:                      salty
+  email:                     salty_dog@example.com
+  dob:                       <%= Date.today %>
+  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  phone:                     9234234234
+  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at:                <%= 1.days.ago.to_s :db %>
+  is_active:                 true
+  reset_code:                NULL
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+
+saz:
+  id:                        4
+  name:                      saz
+  email:                     saz@vinsol.com
+  dob:                       <%= Date.today %>
+  salt:                      90558f35e16e17700015e022132e550a2849f734
+  phone:                     9999999999
+  crypted_password:          46bde8dccb6709890511221391730b129ea22dd3
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  is_active:                 true
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3er49e6ce918
+  name:                      prashant
+  
+raju:
+  id:                        5
+  name:                      raju  
+  email:                     raju@example.com
+  dob:                       <%= Date.today-300%>
+  salt:                      90558f35e16e17700015e022132e550a2849f734
+  crypted_password:          46bde8dccb6709890511221391730b129ea22dd3
+  phone:                     9234234234
+  created_at:                <%= 1.days.ago.to_s :db %>
+  remember_token_expires_at: nil
+  remember_token:            nil
+  is_active:                 true
+  reset_code:                56cff93ca673b50e4392cc7d2f515941217d070f
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  
+sazqwert:
+  id:                        6
+  email:                     sazqwert@vinsol.com
+  dob:                       <%= Date.today %>
+  salt:                      51e4e3935ada9c2d58019fd831c4985ae3f791ae
+  phone:                     9999999999
+  crypted_password:          99c1d593f4dd4231603256765273b21c0a93142d
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  is_active:                 true
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  name:                      prashant
+
+qwertsaz:
+  id:                        7
+  email:                     qwertsaz@vinsol.com
+  dob:                       <%= Date.today %>
+  salt:                      51e4e3935ada9c2d58019fd831c4985ae3f791ae
+  phone:                     9999999999
+  crypted_password:          99c1d593f4dd4231603256765273b21c0a93142d
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  is_active:                 true
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  name:                      qwertsaz
+
+user_with_no_game:
+  id:                        8
+  email:                     u@gmail.com
+  dob:                       <%= Date.today %>
+  salt:                      51e4e3935ada9c2d58019fd831c4985ae3f791ae
+  phone:                     9999999999
+  crypted_password:          99c1d593f4dd4231603256765273b21c0a93142d
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  is_active:                 true
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  name:                      user
+  
+new_user:
+  id:                        9
+  email:                     new_user@gmail.com
+  dob:                       <%= Date.today %>
+  salt:                      51e4e3935ada9c2d58019fd831c4985ae3f791ae
+  phone:                     9999999999
+  crypted_password:          99c1d593f4dd4231603256765273b21c0a93142d
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  is_active:                 true
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  name:                      new_user
+
+dilli_mausi:
+  id:                	       10  
+  email:                     mausi@gmail.com
+  dob:                       <%= Date.today %>
+  salt:                      51e4e3935ada9c2d58019fd831c4985ae3f791ae
+  phone:                     9999999999
+  crypted_password:          99c1d593f4dd4231603256765273b21c0a93142d
+  created_at:                Wed, 21 Oct 2009 05:37:39 UTC +00:00
+  is_active:                 false
+  reset_code:                nil
+  identification_token:      ac2953044c6bee1a3eac789e4b4c3cd49e6ce918
+  name:                      new_user
+  
+  

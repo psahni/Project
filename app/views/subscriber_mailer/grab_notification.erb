@@ -1,0 +1,12 @@
+Dear <%= @user.name %>
+
+You have grabbed <%= @game.name %>. Please make sure to come to our place and pick the game before <%= Date.today+2 %> 5:00 P.M. otherwise it will be assigned to some other user.<br /><br />
+<% if !@user.rented_game.blank? %>
+Also you have a rented game, <%= @user.rented_game.name %>. You need to return it if you want to rent <%= @game.name %>. So please bring the rented game with you to return.<br /><br />
+<% end %>
+Address:<br />
+Vinayak Solutions Pvt. Ltd.<br />
+2/6, Basement of ICICI Building<br />
+West Patel Nagar<br />
+New-Delhi
+

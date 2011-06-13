@@ -1,0 +1,94 @@
+quentin_grabbed_mario: 
+  user_id: 1
+  game_id: 1
+  status: <%= RENTING_STATUS[:grabbed] %>
+  
+quentin_has_rented_mario2:
+  user_id: 1
+  game_id: 3
+  status: <%= RENTING_STATUS[:rented] %>
+  
+quentin_has_shortlisted_mario3:
+  user_id: 1
+  game_id: 4
+  status: <%= RENTING_STATUS[:shortlisted] %>
+
+aaron_has_rented_mario2:
+  user_id: 2
+  game_id: 3
+  status: <%= RENTING_STATUS[:rented] %>
+
+sazqwert_has_grabbed_mariobros:
+  game_id: 10
+  user_id: 6
+  status: <%= RENTING_STATUS[:grabbed] %>
+  grabbed_at: 2.days.ago
+    
+qwertsaz_has_grabbed_mariobros:
+  game_id: 10
+  user_id: 7
+  status: <%= RENTING_STATUS[:grabbed] %>
+  grabbed_at: 2.days.ago
+
+raju_has_grabbed_mariobros:
+  game_id: 10
+  user_id: 5
+  status: <%= RENTING_STATUS[:grabbed] %>
+    
+saz_has_grabbed_prince:
+  game_id: 8
+  user_id: 4
+  status: <%= RENTING_STATUS[:grabbed] %>
+    
+raju_has_rented_prince:
+  game_id: 8
+  user_id: 5
+  status: <%= RENTING_STATUS[:rented] %>  
+
+singh_has_shortlisted_prince:
+  user_id: 3
+  game_id: 8
+  status: <%= RENTING_STATUS[:shortlisted] %>
+  
+singh_has_shortlisted_mariobros:
+  user_id: 3
+  game_id: 10
+  status: <%= RENTING_STATUS[:shortlisted] %>
+
+singh_has_shortlisted_mariobros22:
+  user_id: 3
+  game_id: 12
+  status: <%= RENTING_STATUS[:shortlisted] %>
+  
+singh_has_shortlisted_mario7:
+  user_id: 3
+  game_id: 9
+  status: <%= RENTING_STATUS[:shortlisted] %>
+  
+singh_has_shortlisted_test1:
+  user_id: 3
+  game_id: 6
+  status: <%= RENTING_STATUS[:shortlisted] %>
+    
+singh_has_shortlisted_mario3:
+  user_id: 3
+  game_id: 4
+  status: <%= RENTING_STATUS[:notified] %>
+  notified_at: 2.days.ago
+  
+aaron_has_shortlisted_prince:
+  user_id: 2
+  game_id: 9
+  status: <%= RENTING_STATUS[:notified] %>
+  notified_at: 2.days.ago
+
+prince_game_has_been_grabbed:
+  user_id: 9
+  game_id: 13
+  status: <%= RENTING_STATUS[:grabbed] %>
+  grabbed_at: 2.days.ago
+  
+shortlisted_game:
+  user_id: 8
+  game_id: 13
+  status: <%= RENTING_STATUS[:shortlisted] %>

@@ -1,0 +1,109 @@
+<div id="games_users">
+  <div class="one_col">
+    <div class="one_col_top">&nbsp;</div>
+    <div class="one_col_content games_user_info">
+
+      <p>	<label>User Name:</label> <%= @user.name %></p>
+
+      <p><label>Email:</label> <%= mail_to @user.email %></p>
+      <p><label>Mobile:</label> <%= @user.phone %></p>
+      <p><label>Status: </label>
+        <% if @user.is_active? %>
+        Active (<%= link_to "Deactivate", deactivate_account_admin_user_path(@user) %>)</p>
+        <p><label>Subscribed on:</label> <%= @user.subscribed_on.strftime("%d-%m-%Y") if @user.subscribed_on%>
+          <% else %>
+          Inactive (<%= link_to "Activate", activate_account_admin_user_path(@user) %>)
+          <% end %></p>
+          <p><label>Identification Token:</label> <%= @user.identification_token %></p>
+        </div>   
+        <div class="one_col_bottom">&nbsp;</div>
+      </div>
+
+
+      <div class="one_col">
+        <div class="two_col rented_games">
+          <div class="two_col_top">&nbsp;</div>
+          <div class="two_col_content">
+            <h5>Rented game</h5>
+
+
+            <%if @user.rented_game%>
+            <div class="dashboard_game_image">  <%= !@user.rented_game.image_file_name.nil? ? image_tag(@user.rented_game.image.url(:thumb)) : image_tag("default_thumb.jpg") %></div>
+            <p class="dashboard_game_name"> <%=link_to @user.rented_game.name,game_path(@user.rented_game)%></p>
+            <p class="other_content"><label>Rented On:</label><%= rented_on_time(@user.rented_game, @user) %></p>
+
+            <span id="return"><%= link_return(@user) %></span>
+
+            <%else%>
+            There is no rented game.
+            <%end%>
+
+          </div>   
+          <div class="two_col_bottom">&nbsp;</div>
+        </div>
+        <div class="two_col grabbed_game">
+          <div class="two_col_top">&nbsp;</div>
+          <div class="two_col_content">
+
+            <h5>Grabbed game</h5>
+            <% if @user.grabbed_game %>
+            <div class="dashboard_game_image">   <%= !@user.grabbed_game.image_file_name.nil? ? image_tag(@user.grabbed_game.image.url(:thumb)) : image_tag("default_thumb.jpg") %></div>
+            <p class="dashboard_game_name"><%=link_to @user.grabbed_game.name,game_path(@user.grabbed_game)%></p>
+            <p class="other_content"><label>Grabbed On:</label><%= grabbed_on_time(@user.grabbed_game, @user) %></p>
+
+            <span id="rent_return"><%= link_rent(@user) %></span>
+            <%else%>
+            There is no grabbed game.
+            <%end%>
+          </div>   
+          <div class="two_col_bottom">&nbsp;</div>
+        </div>
+      </div>
+      <div class="one_col">
+        <div class="one_col_top">&nbsp;</div>
+        <div class="one_col_content shortlisted_games">
+          <h5>Shortlisted games(<%= @user.shortlisted_games.size %>)</h5>
+          <% unless @user.shortlisted_games.blank?%>
+          <%@user.shortlisted_games.each do |sgame| %>
+          <div id = "game_<%=sgame.id%>" class="shortlisted_games_list">
+            <p><%=link_to sgame.name,admin_game_path(sgame)%></p>
+
+            <div class="dashboard_game_image"><%=link_to (image_tag sgame.image.url(:icon)),admin_game_path(sgame) %></div>
+
+          </div>
+          <%end%>
+          <%else%>
+          There is no shorilisted game.
+          <%end%>
+        </div>   
+        <div class="one_col_bottom">&nbsp;</div>
+      </div>
+
+
+      <div class="one_col">
+        <div class="one_col_top">&nbsp;</div>
+        <div class="one_col_content shortlisted_games">
+          <h5>Games Subscribed Earlier(<%= @user.subscribed_games.size %>)</h5>
+          <% unless @user.subscribed_games.blank?%>
+          <%@user.subscribed_games.each do |sgame| %>
+          <div id = "game_<%=sgame.id%>" class="shortlisted_games_list">
+            <%=link_to sgame.name,admin_game_path(sgame)%>
+            <p>
+              <%= rented_game_details(sgame, @user) %>
+              <%= returned_game_details(sgame, @user) %>
+            </p>
+          </div>
+          <%end%>
+          <%else%>
+          No game has been subscribed yet.
+          <%end%>
+        </div>   
+        <div class="one_col_bottom">&nbsp;</div>
+      </div>
+
+
+
+
+
+
+    </div>

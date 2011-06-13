@@ -1,0 +1,22 @@
+#Mon Nov 16 19:15:55 IST 2009
+com.aptana.ide.update.RELEASE_MESSAGE_URL_PREFIX=http\://www.aptana.com/tools/radrails/release-message/
+//http\://ide.aptana.com/content_ide/images/ajax/spry.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.adobe.spry.1.6.png
+//http\://ide.aptana.com/content_ide/images/feature_air.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.aptana.ide.feature.framework.air.png
+eclipse.preferences.version=1
+//http\://ide.aptana.com/content_ide/images/ajax/scriptaculous.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.scriptaculous.1.8.png
+//http\://ide.aptana.com/content_ide/images/feature_cloud.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.aptana.ide.feature.server.cloud.png
+//http\://ide.aptana.com/content_ide/images/feature_pydev.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.python.pydev.feature.png
+//http\://ide.aptana.com/content_ide/images/ajax/aflax.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.aflax.1.0.png
+com.aptana.ide.update.LOCAL_PLUGIN_LISTING_URL=bundleentry\://66.fwk31843011/plugins_radrails_1.5.xml
+//http\://ide.aptana.com/content_ide/images/feature_nokia.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.nokia.wrt.feature.png
+//http\://ide.aptana.com/content_ide/images/ajax/rico.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.openrico.rico.2.0.png
+//http\://ide.aptana.com/content_ide/images/ajax/jquery.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.jquery.1.3.png
+//http\://ide.aptana.com/content_ide/images/ajax/dojo.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.dojotoolkit.dojo.1.3.png
+//http\://ide.aptana.com/content_ide/images/ajax/mootools.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/net.mootools.1.2.png
+//http\://ide.aptana.com/content_ide/images/ajax/prototype.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.prototypejs.prototype.1.6.png
+//http\://ide.aptana.com/content_ide/images/ajax/ext.gif=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.extjs.ext.2.2.gif
+//http\://ide.aptana.com/content_ide/images/feature_pdt.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/org.zend.php.debug_feature.png
+//http\://ide.aptana.com/content_ide/images/ajax/library.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.ms.ajax.3.5.png
+com.aptana.ide.update.REMOTE_PLUGIN_LISTING_URL=http\://download.aptana.com/tools/radrails/plugin/plugins_radrails_1.5.xml
+//http\://ide.aptana.com/content_ide/images/ajax/yui.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.yahoo.yui.2.7.png
+//http\://ide.aptana.com/content_ide/images/ajax/mochikit.png=/home/sahni/gamesite/.metadata/.plugins/com.aptana.ide.update/com.mochikit.1.4.png

@@ -1,0 +1,57 @@
+<div class="one_col">
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">  
+    <div class="game_show">  
+      <h3><%=h (@game.name)%></h3>	
+
+      <div id="game_show_left">
+        <div id="game_show_image">
+
+          <% unless @game.image_file_name.blank? %>
+          <span id="the_image"><%= image_tag(@game.image.url(:medium)) %></span>
+          <% else %>
+          <span id="the_image"><%= image_tag("default_medium.jpg") %></span>
+          <% end %>
+        </div> 
+
+        <div id="game_label_admin"> 	
+          <p class="button_admin"><span class="edit_button"><%= link_to 'Edit', edit_admin_game_path, :class=>"edit" %> <%= link_to 'Delete', [:admin, @game], :method => :delete, :confirm => "Are you sure?" %></span></p>
+        </div>
+      </div>     
+
+      <div id="game_show_right">
+        <div class="game_info">
+          <p class="category_platform"><%= Platform.find_by_id(@game.platform_id).name %> |  <% @game.categories.collect do |x| %>
+						<%= x.name %>
+						&nbsp;
+						<% end %> </p>
+          <p id="desc"><%=h @game.description %>
+            <span class="quantity">Quantity: <%= @game.quantity %><br />
+              <% if !@game.users_who_grabbed.blank? %>
+              Currently Grabbed By : <%= @game.users_who_grabbed.collect{|u| u.name}.join(', ') %>(<%= @game.users_who_grabbed.size %>)<br /><% end %>
+              <% if !@game.users_who_rented.blank? %>
+              Currently Rented By : <%= @game.users_who_rented.collect{|u| u.name}.join(', ') %>(<%= @game.users_who_rented.size %>)<br /><% end %>
+              <% if !@game.users_who_shortlisted.blank? %>
+              Currently Shortlisted By : <%= @game.users_who_shortlisted.collect{|u| u.name}.join(', ') %>(<%= @game.users_who_shortlisted.size %>)<br /><% end %>
+              <% if @game.available_for_shortlisting %>
+              Not Available
+              <% else %>
+              Available(<%= @game.quantity_left%>)
+              <% end %>
+            </span>
+          </p>	
+
+
+        </div>	
+      </div>  
+    </div>
+
+
+  </div>
+  <div class="one_col_bottom">&nbsp;</div>
+</div>
+
+
+
+
+

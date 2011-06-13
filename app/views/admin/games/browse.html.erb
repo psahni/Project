@@ -1,0 +1,26 @@
+
+<div id="games_listing">
+  <p>Games Listing</p>
+</div>
+<%= will_paginate @games %>
+<div id="pagination_show" ><%= set_paginate_value(Game) %></div>
+<% @games.each do |game| %>
+<div class="games">
+  <%=render :partial => 'admin/games/default_pic_index' ,:locals => {:game => game}%>
+  <p class="game_title"><%= link_to truncate(h(game.name),:length => 35), game_path(game) %></p>
+  <p class="description"> 
+  <%= render :partial => 'admin/games/game_desc',:locals => {:game => game , :len => 80} %>
+  	<span class="quantity">Quantity: <%= game.quantity %>
+		<% if game.available_for_shortlisting %>
+			Not Available 
+		<% else %>
+			| Available: <%= game.quantity_left%>
+		<% end %></span>
+		</p> 
+  <p class="category_platform"><%= Platform.find_by_id(game.platform_id).name %> | <%= Category.find_by_id(game.category_id).name %></p>
+
+  <p class="button"><span class="edit_button"><%= link_to 'Edit', edit_admin_game_path(game), :class=>"edit" %> <%= link_to 'Delete', [:admin, game], :method => :delete, :confirm => "Are you sure?" %></span></p>
+</div>
+
+<%end%>
+<%= will_paginate @games %>

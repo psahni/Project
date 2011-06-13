@@ -1,0 +1,20 @@
+Simulation:
+  id: 1
+  name: Simulation
+
+Action:
+  id: 2
+  name: Action
+
+Adventure:
+  id: 3
+  name: adventure
+
+Role Playing:
+  id: 4
+  name: Role Playing
+
+Strategy:
+  id: 5
+  name: Strategy
+

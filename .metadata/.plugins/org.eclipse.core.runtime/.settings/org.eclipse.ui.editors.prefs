@@ -1,0 +1,17 @@
+#Mon Nov 16 19:35:47 IST 2009
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.Foreground.SystemDefault=false
+lineNumberRuler=true
+AbstractTextEditor.Color.Foreground=255,255,255
+AbstractTextEditor.Color.SelectionBackground=255,255,255
+currentLineColor=39,39,39
+AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
+AbstractTextEditor.Color.Background=0,0,0
+lineNumberColor=255,255,255
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+tabWidth=2
+printMarginColor=255,0,0
+eclipse.preferences.version=1
+AbstractTextEditor.Color.SelectionForeground=82,82,82
+undoHistorySize=100
+overviewRuler_migration=migrated_3.1

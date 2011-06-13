@@ -1,0 +1,32 @@
+<div class="one_col">
+  <div id="games_listing">
+    <p>Subscription Details</p>
+  </div>
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">
+
+
+    <div id="confirmation">
+			<p><label>Subscribed On:</label> <%= @user.subscribed_on.strftime("%d-%m-%Y") if current_user.subscribed_on %> </p>
+			<p><label>Security Submitted:</label> Rs. <%= SECURITY %></p>
+			<p><label>Monthly Payment:</label> Rs. <%= MON_SUB %></p>
+		<div class="subs_games">	
+		<p id="subs_game">Games Subscribed Earlier:</p>
+		<ul>
+			<% unless @user.subscribed_games.blank? %>
+				<% @user.subscribed_games.each do |game| %>
+					<li><span><%= game.name %></span><br /> 
+							<%= grabbed_game_details(game, @user) %>
+							<%= rented_game_details(game, @user) %>
+							<%= returned_game_details(game, @user) %><br />
+					</li>
+				<% end %>
+			<% else %>
+				<li>No game subscribed yet</li>
+			<% end %>
+		</ul>
+		</div>
+  </div>
+  </div>   
+  <div class="one_col_bottom">&nbsp;</div>
+</div>

@@ -1,0 +1,23 @@
+    <% form_tag session_path do -%>
+ 
+    <span class="game_platform"></span>
+    <p>
+      <%= label_tag 'Email' %>
+      <%= text_field_tag 'email', @email %>
+    </p>
+    <p>
+      <%= label_tag 'password' %>
+      <%= password_field_tag 'password' %><br/> 
+    </p>
+    <p id="remember_mep">
+      <%= check_box_tag 'remember_me', '1', @remember_me %>
+      <%= label_tag 'remember_me', 'Remember me' %>
+    </p>  
+    <p id="forget_pass">
+    <%= link_to 'Forgot password?', '/forgot' %>
+    </p>
+   
+    <p>
+      <%= submit_tag 'Sign In' %>
+    </p>
+    <% end -%>

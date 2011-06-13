@@ -1,0 +1,19 @@
+sr1: 
+  user_id: 1
+  renewed_on: <%= Date.today %>
+  
+cg2:
+  user_id: 2
+  renewed_on: <%= Date.today - 5 %>
+  
+cg3:
+  user_id: 1
+  renewed_on: <%= Date.today - 2.months %>
+
+cg4:
+  user_id: 4
+  renewed_on: <%= Date.today - 2.months %>
+
+cg5:
+  user_id: 5
+  renewed_on: <%= Date.today - 1.month %>

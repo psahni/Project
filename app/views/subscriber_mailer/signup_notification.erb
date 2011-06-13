@@ -1,0 +1,19 @@
+Dear <%= @user.name %>!<br /><br />
+
+Thanks for signing up!<br /><br />
+
+For account activation, you need to make a payment of Rs.<%= MON_SUB+SECURITY %>, which includes Rs.<%= MON_SUB %> (monthly subscription) and Rs.<%= SECURITY %> as security (one time refundable payment). Payment can only be made through cheque in favor of "Vinsol Gamesite".<br />
+
+We are giving you an identification token. Please make sure to write this token behind the cheque before sending it to us.<br />
+
+Your identification token is <%= @user.identification_token %><br /><br />
+
+Please send your cheque at the address given below:<br />
+
+Vinayak Solutions Pvt. Ltd.<br />
+2/6, Basement of ICICI Building<br />
+West Patel Nagar<br />
+New-Delhi<br /><br />
+
+As soon as your cheque gets cleared, your account will be activated and a notification will be sent to you through email.
+

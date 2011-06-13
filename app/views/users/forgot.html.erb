@@ -1,0 +1,18 @@
+<div class="one_col">
+  <div id="games_listing">
+    <p>Forgot Password</p>
+  </div>
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">
+    <div id="forgot_pass_form">  
+      <% form_for :user do |f| %>
+      <p>Please enter your email address:</p>
+      <p>Email:
+        <%= f.text_field :email %></p>
+        <p> <%= submit_tag 'Submit' %></p>
+        <% end %>
+    </div> 
+  </div>   
+  <div class="one_col_bottom">&nbsp;</div>
+</div>
+

@@ -1,0 +1,5 @@
+Hi <%= @user.name %>!<br /><br />
+
+Your subscription will expire on <%= (@user.subscribed_on+30).strftime("%d-%m-%Y") %>.<br />
+To continue the services, please renew your subscription before <%= (@user.subscribed_on+30).strftime("%d-%m-%Y") %>.
+

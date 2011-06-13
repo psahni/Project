@@ -1,0 +1,11 @@
+
+<%if game.available_for_shortlisting %>
+<%= link_to "Grab Now", {:controller => 'games', :action => 'grab_game', :id => game}, {:class => "action_button", :id => "grab_now"} %>
+<%else %>
+<%if logged_in? and current_user.already_shortlisted game %>
+<b>Already shortlisted!!</b>
+<%else %>
+  <%=link_to "Shortlist Now!", shortlist_game_path(game),:class => "action_button",:id => "shortlist"%>
+<%end %>
+<%end %>
+

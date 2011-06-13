@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+General:
+  id: 1
+  name:  General
+
+Above18:
+  id: 2
+  name: Above18
+
+Parental:
+  id: 3
+  name: Parental

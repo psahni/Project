@@ -1,0 +1,27 @@
+<div class="one_col">
+  <div id="games_listing">
+    <p>Reset Password</p>
+  </div>
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">
+    <div id="new_pass_form">
+		<% form_for :user do |f| -%>
+		 <span class="game_platform"></span>
+		 		<%= f.error_messages%>
+		<p>
+			<%= label_tag 'password' %>
+			<%= f.password_field :password %>
+			<%=render :partial => 'min_pass_text'%>
+		</p>
+
+		<p>
+			<%= label_tag 'password_confirmation', 'Confirm Password' %>
+			<%= f.password_field :password_confirmation %>
+			<%=render :partial => 'min_pass_text'%>
+		</p>
+	  <p><%= submit_tag 'Reset' %></p>
+		<% end -%>
+	 </div>
+  </div>   
+  <div class="one_col_bottom">&nbsp;</div>
+</div>

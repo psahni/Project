@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Gamesite Admin</title>
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= stylesheet_link_tag 'reset.css' %>
+
+
+  <!-- <%#=javascript_include_tag :defaults %>
+    <%#= javascript_tag "jQuery.noConflict();" %>  	
+    <%#=javascript_include_tag 'jquery'%>
+  -->
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery-ui' %>
+  <%= javascript_include_tag 'jrails' %>
+  <%= javascript_include_tag 'slider' %>
+  <%= javascript_include_tag 'fancyzoom.min' %>
+
+
+
+  <script type="text/javascript">
+
+  jQuery('#navbar li').each(function(){
+    this.onclick=function(event) {        
+      jQuery(".active").removeClass( "active");
+      jQuery(this).addClass("active");         
+    }
+  });
+
+  jQuery(document).ready(function() {
+
+    jQuery('#medium_box_link').fancyZoom({width:400, height:50});
+
+  });               
+  function lightbox(){
+
+    document.getElementById('jquery-overlay').style.display='block';
+
+  }
+  function lightboxclose(){
+
+    document.getElementById('jquery-overlay').style.display='none';
+
+  }
+  </script>
+
+</head>
+<body>
+  <div id="background">
+    <div id="wrapper">
+      <p class="current_user_admin">Welcome! Admin</p>
+
+      <div id="logo">
+        <%= link_to image_tag("/images/logo.png"), '/' %>
+      </div>
+      <div id="menu">
+        <ul id="navbar">
+          <li class=<%= active_class('admin/games', 'index') %>><%=link_to 'home', admin_games_path %></li>
+          <li class=<%= active_class('admin/users', 'index') %>><%=link_to 'users', admin_users_path %></li>
+          <li class=<%= active_class('admin/games', 'new') %>><%=link_to 'create new game', new_admin_game_path  %></li>
+
+          <% if params[:category]=='Action' || params[:category]=='Adventure' || params[:category]=='Simulation' || params[:category]=='Role Playing' || params[:category]=='Strategy' %>
+          <li class="active category_li">
+            <% else %>
+            <li class="category_li">
+              <% end %>
+              <a href="#">category</a>
+              <ul class="sub_nav_cat">
+                	<li><%= link_to 'Action',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Action")%></li>
+  		            <li><%= link_to 'Adventure',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Adventure") %></li>
+  		            <li><%= link_to 'Simulation',  :controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Simulation") %></li>
+  		            <li><%= link_to 'Role Playing',  :controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Role Playing")%></li>
+  		            <li><%= link_to 'Strategy',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Strategy") %></li>
+              </ul>
+            </li>
+            <% if params[:platform]=='PS3' || params[:platform]=='Xbox360' %>
+            <li class="active platform_li">
+              <% else %>
+              <li class="platform_li">
+                <% end %>		
+                <a href="#">platform</a>
+                	<ul class="sub_nav_plat">
+    								<li><%= link_to 'PS3',:controller => "games",:action => "browse_by_platform",:platform => Platform.find_by_name("PS3") %></li>
+    		            <li><%= link_to 'XBox360',:controller => "games",:action => "browse_by_platform",:platform => Platform.find_by_name("Xbox360")%></li>
+
+    							</ul>
+              </li>
+              <li><a href="#medium_box" id="medium_box_link" onclick="lightbox()">search user</a></li>
+            </ul>                         
+      </div>
+          <%[:notice, :error,:warning].each do |key| %>
+          <% if flash[key] %>
+          <div id = <%="flash_#{key.to_s}"%>>
+            <%= flash[key] %>
+          </div>
+          <% end %>
+          <% end %>
+          <div id="left_col">
+            <div id="search1">
+              <p id="search_title">&nbsp;</p>
+              <ul>
+                <%=render :partial => 'games/search' %>
+              </ul>    
+            </div>
+            <div id="platform">
+              <p id="platform_title">&nbsp;</p>
+              <ul>
+                		<li><%= link_to 'PS3',:controller => "games",:action => "browse_by_platform",:platform => Platform.find_by_name("PS3") %></li>
+    		            <li><%= link_to 'XBox360',:controller => "games",:action => "browse_by_platform",:platform => Platform.find_by_name("Xbox360")%></li>
+              </ul>    
+            </div>  
+            <div id="category">
+              <p id="category_title">&nbsp;</p>
+              <ul>	
+                	<li><%= link_to 'Action',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Action")%></li>
+  		            <li><%= link_to 'Adventure',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Adventure") %></li>
+  		            <li><%= link_to 'Simulation',  :controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Simulation") %></li>
+  		            <li><%= link_to 'Role Playing',  :controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Role Playing")%></li>
+  		            <li><%= link_to 'Strategy',:controller => "games",:action => "browse_by_category",:category => Category.find_by_name("Strategy") %></li>
+              </ul>    
+            </div>
+
+          </div>
+          <div id="medium_box">
+            <%form_tag(:controller => "admin/users" ,:action => :search, :method => :get ) do %>
+            <h5> Search user by email:</h5>
+            <%= text_field_tag :email %><br /><br />
+            <%= submit_tag 'Search' %>
+            <% end %>
+
+          </div>  
+          <div id="right_col">
+
+            <%= yield %>         
+          </div>         
+        </div>
+
+        <div id="footer">
+          <span>Copyright 2009</span>
+          <ul>
+            <li><%= link_to "Home | ", games_path %></li>
+            <li><%= link_to "Registration | ", new_user_path %></li>
+            <li><%= link_to "About Us | ", '/about_us' %></li>
+            <li><%= link_to "Contact Us", '/contact_us' %></li>
+          </ul>  
+        </div>
+      </div>  
+
+      <div id="jquery-overlay" onclick="lightboxclose()">
+        &nbsp;
+      </div>  
+    </body>
+    </html>

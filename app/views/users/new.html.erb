@@ -1,0 +1,62 @@
+<div class="one_col">
+  <div id="games_listing">
+    <p>Register</p>
+  </div>
+  <% @user.password = @user.password_confirmation = nil %>
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content">
+
+ <div id="register_form">
+    <% form_for :user, :url => users_path do |f| -%>
+    <p id="register_info">
+      For registration, you need to make a payment of Rs.<%= MON_SUB+SECURITY %>, which includes Rs.<%= MON_SUB %> (monthly subscription) and 
+      Rs.<%= SECURITY %> as security (one time refundable payment). Payment can only be made through cheque in favor of "Vinsol Gamesite".
+    </p>
+    <%= f.error_messages%><br />	
+    <p>
+      <b>*All fields are mandatory.</b>
+    </p>
+
+    <p>
+      <%= label_tag 'name' %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= label_tag 'email' %>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= label_tag 'Mobile' %>
+      <%= f.text_field :phone %>
+    </p>
+    <p>
+      <%= label_tag 'Date of Birth' %>
+      <%if @user.errors.on(:base) %>
+      <div class="fieldWithErrors">
+        <%= f.date_select :dob, :start_year => 2000, :end_year => Time.now.year-60 ,:default => Date.new(1985,1,1)%>
+      </div>
+      <%else%>
+      <%= f.date_select :dob, :start_year => 2000, :end_year => Time.now.year-60 ,:default => Date.new(1985,1,1) %>
+      <%end%>	
+    </p>	
+    <p>
+      <%= label_tag 'password' %>
+      <%= f.password_field :password %><br/>
+      <%=render :partial => 'min_pass_text'%>
+
+    </p>
+    <p>
+      <%= label_tag 'password_confirmation', 'Confirm Password' %>
+      <%= f.password_field :password_confirmation %><br/>
+      <%=render :partial => 'min_pass_text'%>
+    </p>
+
+    <p>
+      <%= submit_tag 'Sign up' %>
+    </p>
+    <% end %>
+</div>
+  </div>   
+  <div class="one_col_bottom">&nbsp;</div>
+</div>  

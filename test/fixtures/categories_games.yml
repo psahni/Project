@@ -1,0 +1,19 @@
+cg1: 
+  category_id: 1
+  game_id: 1
+  
+cg2:
+  category_id: 2
+  game_id: 3
+  
+cg3:
+  category_id: 3
+  game_id: 4
+
+cg4:
+  category_id: 4
+  game_id: 3
+
+cg5:
+  category_id: 5
+  game_id: 11

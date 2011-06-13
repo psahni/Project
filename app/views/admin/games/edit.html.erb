@@ -1,0 +1,28 @@
+
+  <div class="one_col">
+    <div id="games_listing">
+      <p>Edit Game</p>
+    </div>
+    <div class="one_col_top">&nbsp;</div>
+    <div class="one_col_content">  
+       <div id="edit_page">
+     	<% if !@game.image_file_name.blank? && @game.image.errors.blank? %>
+     	  <div id="the_image"><%= image_tag(@game.image.url(:medium)) %></div>
+     	  <%= link_to 'Remove Image', {:action => :remove_image, :id => @game}, :class => "remove_image" %>
+     	<% else %>
+					<% if !@game.image.errors.blank? %>
+						<div id="the_image"><%= image_tag(@prev_image)%></div>
+					<% else %>
+     	  	<div id="the_image"><%= image_tag("default_medium.jpg")%></div>
+					<% end %>
+     	<% end %>
+   	
+    <div id="edit_game_form">  
+      <%= render :partial => 'form', :locals => {:game => [:admin, @game], :button_text => 'Update', :act => 'update', :path_to_redirect => admin_game_path} %>
+    </div>  
+    </div>
+      </div>   
+      <div class="one_col_bottom">&nbsp;</div>
+    </div>
+  
+  

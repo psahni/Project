@@ -1,0 +1,29 @@
+<span id="gametop">&nbsp;</span>
+<div id="games_list">
+	<div id="games">
+		<h1 style=font-weight:normal;color:black>Personal details:</h1>
+		Name:<%=@user.name%><br/>
+		Phone:<%=@user.phone%><br/>
+		email:<%=@user.email%><br/>
+		identification_token:<%=@user.identification_token%>
+		<h1 style=font-weight:normal;color:black>Subscription details:</h1>
+		Subscribed On: <%= current_user.subscribed_on.strftime("%d-%m-%Y") if current_user.subscribed_on %> <br />
+		Security Submitted: Rs. <%= SECURITY %><br />
+		Monthly Payment: Rs. <%= MON_SUB %><br /><br /> 
+		<b>Games Subscribed Earlier:</b> <br />
+		<ul>
+			<% if !current_user.subscribed_games.blank? %>
+				<% current_user.subscribed_games.each do |game| %>
+					<li><b><%= game.name %></b><br /> 
+							<%= grabbed_game_details(game, current_user) %>
+							<%= rented_game_details(game, current_user) %>
+							<%= returned_game_details(game, current_user) %><br />
+					</li>
+				<% end %>
+			<% else %>
+				<li>No game subscribed yet</li>
+			<% end %>
+		</ul>
+		<br/>
+		<%= link_to 'Change Password', new_password_user_path(current_user) %>
+</div>

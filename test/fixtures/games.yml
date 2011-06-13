@@ -1,0 +1,142 @@
+mario:             
+  id: 1
+  name: mario
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 3
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+mario1:             
+  id: 2
+  name: mario1
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+mario2:             
+  id: 3
+  name: mario2
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+      
+mario3:             
+  id: 4
+  name: mario3
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"      
+  
+mario4:             
+  id: 5
+  name: mario4
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"        
+  
+mario5:             
+  id: 6
+  name: mario5
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"          
+  
+mario6:   
+  id: 7          
+  name: mario6
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"            
+  
+mario7:             
+  id: 8
+  name: mario7
+  platform_id: 1
+  age_category_id: 1
+  description: test
+  quantity: 0
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+prince:
+  id: 9
+  name: prince
+  platform_id: 1
+  age_category_id: 1
+  description: test2
+  quantity: 2
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+mariobros:
+  id: 10
+  name: mariobros
+  platform_id: 1
+  age_category_id: 1
+  description: test2
+  quantity: 3
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+test1:
+  id: 11
+  name: test1
+  platform_id: 1
+  age_category_id: 1
+  description: test2
+  quantity: 2
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "image/jpg"
+  
+mariobros2:
+  id: 12
+  name: mariobros22
+  platform_id: 1
+  age_category_id: 1
+  description: test2
+  quantity: 2
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "images/jpg"
+  
+free_game:
+  id: 13
+  name: free_game
+  platform_id: 1
+  age_category_id: 1
+  description: test2
+  quantity: 1
+  image_file_name: "test_image.jpg"
+  image_file_size: 200
+  image_content_type: "image/jpg"

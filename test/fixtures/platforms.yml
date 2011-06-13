@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+PS3:
+  id: 1
+  name: PS3
+
+XBox360:
+  id: 2
+  name: Xbox360
