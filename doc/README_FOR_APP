@@ -2,3 +2,39 @@ Use this README file to introduce your application and point to useful places in
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
 id for Ps3 is 1
 id for xbox360 is 2
+
+Steps to run Gamesite on your system:
+
+1. Get the code from git:
+    git clone git@github.com:mjuneja/gamesite.git
+  
+2. Go to gamesite directory:
+    cd gamesite
+
+3. Create database:
+    rake db:create
+
+4. Run migrations:
+    i.  rake db:migrate
+    ii. rake db:seed
+    
+5. Start the server:
+    ruby script/server
+    
+6. To access Admin Interface, type "localhost/admin".
+    Username: admin
+    Password: secret123
+    
+7. To check the test coverage:
+    rake test:coverage
+    
+8. Following are the steps to make 'full text search' working.  
+  i. Install sphinx in your system.
+  ii. Move into 'gamesite'.
+  iii. Execute following rake commands
+        a) rake thinking_sphinx:configure
+        b) rake thinking_sphinx:index
+    c) rake thinking_sphinx:start 
+9.rake task for creating 20 games
+  * rake db:inital
+  * Its path is ../tasks/lib/initial_data.rake
