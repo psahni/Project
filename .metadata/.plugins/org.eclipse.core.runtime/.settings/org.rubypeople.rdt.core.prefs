@@ -1,9 +1,0 @@
-#Mon Nov 16 19:33:34 IST 2009
-org.rubypeople.rdt.core.compiler.taskPriorities=NORMAL,HIGH,NORMAL
-org.rubypeople.rdt.core.compiler.taskCaseSensitive=enabled
-eclipse.preferences.version=1
-org.rubypeople.rdt.core.compiler.taskTags=TODO,FIXME,XXX
-org.rubypeople.rdt.core.formatter.comment.line_length=0
-org.rubypeople.rdt.core.formatter.indentation.size=2
-org.rubypeople.rdt.core.formatter.tabulation.char=space
-org.rubypeople.rdt.core.formatter.tabulation.size=2

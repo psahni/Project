@@ -1,47 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>Gamesite</title>
-		<%= stylesheet_link_tag 'style.css' %>
-		<%= stylesheet_link_tag 'reset.css' %>
-	
-  <!-- <%#=javascript_include_tag :defaults %>
-    <%#= javascript_tag "jQuery.noConflict();" %>  
-    <%#=javascript_include_tag 'jquery'%>
-   -->
-    <%= javascript_include_tag 'jquery' %>
-    <%= javascript_include_tag 'jquery-ui' %>
-    <%= javascript_include_tag 'jrails' %>
-		<%= javascript_include_tag 'slider' %>
-<% if params[:controller]=='games' && params[:action]=='index' %>    
-<%= javascript_include_tag 's3Slider'%>
-
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= stylesheet_link_tag 'reset.css' %>
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery-ui' %>
+  <%= javascript_include_tag 'jrails' %>
+  <%= javascript_include_tag 'slider' %>
+  <% if params[:controller]=='games' && params[:action]=='index' %>
+    <%= javascript_include_tag 's3Slider'%>
+    <script type="text/javascript">
+      jQuery(document).ready(function() {
+        jQuery('#slider').s3Slider({
+          timeOut: 5000
+        });
+      });
+    </script>
+    <% end %>
   <script type="text/javascript">
-  jQuery(document).ready(function() {
-    jQuery('#slider').s3Slider({
-      timeOut: 5000
-    });
-  });
+    jQuery(document).ready(function() {
+                  jQuery(".btn-slide").click(function(){
+        jQuery("#panel").slideToggle("slow");
+        jQuery(this).toggleClass("act"); return false;
+      });
+            jQuery('#navbar li').each(function(){
+                          this.onclick=function(event) {
+                          jQuery(".active").removeClass( "active");
+                                  jQuery(this).addClass("active");
+                          }
+                  });
+          });
   </script>
-<% end %>
-
-  <script type="text/javascript">
-  jQuery(document).ready(function() {  
-		jQuery(".btn-slide").click(function(){
-      jQuery("#panel").slideToggle("slow");
-      jQuery(this).toggleClass("act"); return false;
-    });
-	  jQuery('#navbar li').each(function(){
-			this.onclick=function(event) {        
-	  		jQuery(".active").removeClass( "active");
-				jQuery(this).addClass("active");         
-			}
-		});               
-	});
-  </script>
-
 </head>
 <body>
   <div id="background">
@@ -49,22 +39,20 @@
       <div id="panel">
         <%= render :partial => 'sessions/login_form', :object => :user %>
       </div>
-			
       <%if logged_in? %>
        <p class="current_user">Welcome! <%=current_user.name%></p>
         <p class="logout_button"><%= link_to 'Logout', '/logout' %></p>
       <% else %>
         <p class="slide"><a href="#" class="btn-slide">&nbsp;</a></p>
         <%= link_to "Admin", admin_games_path %>
-			<% end %>
-     
+      <% end %>
       <div id="logo">
         <%= link_to image_tag("/images/logo.png"), '/' %>
       </div>
       <div id="menu">
         <ul id="navbar">
-           <%if logged_in?%>
-             <li class=<%= active_class('games', 'index') %>><%=link_to 'home', games_path %></li>
+           <%  if logged_in? %>
+           <li class=<%= active_class('games', 'index') %>><%=link_to 'home', games_path %></li>
             <li class="my_account_li"><a href="#" id="my_account">my account</a> 
                <ul class = "sub_nav_my">
                   <li><%=link_to "Personal details",personal_details_user_path(current_user),:title => "See your personal details"%></li>
@@ -76,67 +64,64 @@
              <li class=<%= active_class('static', 'about_us') %>><%=link_to 'about us', '/about_us' %></li>
              <li class=<%= active_class('static', 'contact_us') %>><%=link_to 'contact us', '/contact_us' %></li>             
           <%else%>
-          	<li class=<%= active_class('games', 'index') %>><%=link_to 'home', games_path, :class => active_class('games', 'index') %></li>
-          		<% if params[:category]=='Action' || params[:category]=='Adventure' || params[:category]=='Simulation' || params[:category]=='Role Playing' || params[:category]=='Strategy' %>
-							<li class="active category_li">
-						<% else %>
-          		<li class="category_li">
-						<% end %>
-								<a href="#">category</a>
-				<ul class="sub_nav_cat">
-					<%=render :partial => 'admin/games/category_list'%>
-							</ul>
-						</li>
-						<% if params[:platform]=='PS3' || params[:platform]=='Xbox360' %>
-							<li class="active platform_li">
-
-						<% else %>
-							<li class="platform_li">
-						<% end %>		
-								<a href="#">platform</a>
-							<ul class="sub_nav_plat">
-							 <%=render :partial => 'admin/games/platform_list'%>  
-							</ul>
-						</li>
-			<li class=<%= active_class('static', 'about_us') %>><%=link_to 'about us', '/about_us' %></li>
-          	<li class=<%= active_class('static', 'contact_us') %>><%=link_to 'contact us', '/contact_us' %></li>
-          	<li class=<%= active_class('users', 'new') %>><%= link_to 'register', '/signup' %></li>      
-          <%end%>
+            <li class=<%= active_class('games', 'index') %>><%=link_to 'home', games_path, :class => active_class('games', 'index') %></li>
+              <% if params[:category]=='Action' || params[:category]=='Adventure' || params[:category]=='Simulation' || params[:category]=='Role Playing' || params[:category]=='Strategy' %>
+                <li class="active category_li">
+              <% else %>
+          	<li class="category_li">
+              <% end %>
+                <a href="#">category</a>
+                <ul class="sub_nav_cat">
+                  <%=render :partial => 'admin/games/category_list'%>
+                </ul>
+	      </li>
+              <% if params[:platform]=='PS3' || params[:platform]=='Xbox360' %>
+                <li class="active platform_li">
+              <% else %>
+                 <li class="platform_li">
+               <% end %>
+                  <a href="#">platform</a>
+                  <ul class="sub_nav_plat">
+                   <%=render :partial => 'admin/games/platform_list'%>
+                  </ul>
+                  </li>
+                  <li class=<%= active_class('static', 'about_us') %>><%=link_to 'about us', '/about_us' %></li>
+                  <li class=<%= active_class('static', 'contact_us') %>><%=link_to 'contact us', '/contact_us' %></li>
+                  <li class=<%= active_class('users', 'new') %>><%= link_to 'register', '/signup' %></li>
+              <%end%>
         </ul>                         
       </div>
       <%[:notice, :error,:warning].each do |key| %>
-      <% if flash[key] %>
-      <div id = <%="flash_#{key.to_s}"%>>
-        <%= flash[key] %>
-      </div>
-      <% end %>
+        <% if flash[key] %>
+          <div id = <%="flash_#{key.to_s}"%>>
+            <%= flash[key] %>
+          </div>
+        <% end %>
       <% end %>
       <div id="left_col">
       <% if !logged_in?  && (params[:controller]=='games' && params[:action]=='index') %>
         <div id="intro">      
           <p>Now you dont need to buy expensive Xbox 360 and PS3 games. All you have to do is register with Games* to start renting the latest games. Rent as many games as you like for just Rs.500 per month. Grab the game that you want before anyone else can,but if you fail to do so you can shortlist the games of you liking and we will let you know when ever that games get free.Now you dont need to buy expensive Xbox 360 and PS3 games. </p>
         </div>  
-        <% end %>
-        <div id="search1">
-          <p id="search_title">&nbsp;</p>
-          <ul>
-            <%=render :partial => 'games/search' %>
-          </ul>    
-        </div>
-        <div id="platform">
-          <p id="platform_title">&nbsp;</p>
+       <% end %>
+       <div id="search1">
+        <p id="search_title">&nbsp;</p>
+        <ul>
+          <%=render :partial => 'games/search' %>
+        </ul>
+       </div>
+       <div id="platform">
+        <p id="platform_title">&nbsp;</p>
 	<ul>
-      <%=render :partial => 'admin/games/platform_list'%>    
-     </ul>  
-	  </div>  
-	  
+          <%=render :partial => 'admin/games/platform_list'%>
+        </ul>
+       </div>
         <div id="category">
           <p id="category_title">&nbsp;</p>
           <ul>
             <%=render :partial => 'admin/games/category_list'%>
           </ul>    
         </div>
-
       </div>
       <div id="right_col">
         <% if !logged_in?  && (params[:controller]=='games' && params[:action]=='index') %>
@@ -155,15 +140,13 @@
                 <img src="/images/Battlefield-1943-Video-Game-Poster-Battlefield-1943-on-PS3-Xbox-360-and-PC.png" alt="3" />
                 <span class="bottom"><strong>Introduction</strong><br />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla mi risus, tempor in, gravida quis, rutrum vitae, massa....<a href="#">more</a></span>
               </li>
-
               <div class="clear sliderImage"></div>
             </ul>
           </div>
         </div>
-        <%end%>
-        <%= yield %>         
-      </div>         
-     
+       <%end%>
+       <%= yield %>         
+      </div>        
     </div>
     <div id="footer">
       <span>Copyright 2009</span>

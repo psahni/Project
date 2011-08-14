@@ -1,13 +1,8 @@
-
-	<% if game.description.blank? %>
-		&nbsp;
-	<%else%>
-		<% if game.description.length>120 %>
-			<%=truncate(game.description, :length => len)%>
-			<span class="more">
-				<%= link_to "more", game_path(game) %>
-			</span>
-		<% else %>
-			<%=h (game.description)%>
-		<% end %>
-	<% end %>
+<% if game.description.blank? %>
+  &nbsp;
+ <%else%>
+  <%=truncate(game.description, :length => len)%>
+  <span class="more">
+    <%= link_to "more", ( admin_logged_in? ? admin_game_path(game) : game_path(game) )  if  game.description.length > 20 %>
+  </span>
+<% end %>

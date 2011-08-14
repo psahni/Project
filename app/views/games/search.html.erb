@@ -1,9 +1,14 @@
 <% for gameuser in @games %>
   <h2 style="font-size:x-large;">
-    <%= link_to h(gameuser.name), game_path(gameuser)%></h2>
-	<%= render :partial=> "admin/games/game_desc",:locals => {:game => gameuser, :len => 35}%>
-		<p class ="category_platform">Age Category: <%= h AgeCategory.find_by_id(gameuser.age_category_id).name %></p>
-		<p class ="category_platform">Categories: <%= gameuser.find_categories %></p>
-		<p class = "category_platform">Platform:<%=h Platform.find_by_id(gameuser.platform_id).name%>
+  <% if admin_logged_in?  %>
+    <%= link_to h(gameuser.name), admin_game_path(gameuser)%>
+  <% else %>
+    <%= link_to h(gameuser.name), game_path(gameuser)%>
+  <% end %>
+  </h2>
+  <%= render :partial=> "admin/games/game_desc",:locals => {:game => gameuser, :len => 35}%>
+  <p class ="category_platform">Age Category: <%= h AgeCategory.find_by_id(gameuser.age_category_id).name %></p>
+  <p class ="category_platform">Categories: <%= gameuser.find_categories %></p>
+  <p class = "category_platform">Platform:<%=h Platform.find_by_id(gameuser.platform_id).name%></p>
 <%end%>
 <%= will_paginate @games %>

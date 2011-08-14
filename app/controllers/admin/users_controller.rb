@@ -94,6 +94,5 @@ class Admin::UsersController < ApplicationController
     User.send_renew_subscription_notification
     User.deactivate_if_subscription_exceeds_one_month
   end
- 
-  #pks - make a single method for all these kind of methods and move that to application controller
+
 end
