@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   has_many :games, :through => :games_users, :uniq => true
   
   has_many :favorite_games_users
-  has_many :favorite_games, :through => :favorite_games_users, :source => :game, :foreign_key => :favorite_game_id
+  has_many :favorite_games, :through => :favorite_games_users,
+                            :source => :game,
+                            :foreign_key => :favorite_game_id
   
   has_many :subscription_renewals
   named_scope :active, :conditions => {:is_active => 1}
@@ -89,14 +91,14 @@ class User < ActiveRecord::Base
   end
   
   def renewed
-    if !subscription_renewals.blank?
-      if self.rented_game || Date.today - 30 < self.subscription_renewals.last.renewed_on
-        SubscriptionRenewal.create(:renewed_on => self.subscription_renewals.last.renewed_on + 30, :user => self)
-      else
-        SubscriptionRenewal.create(:renewed_on => Date.today, :user => self)
-      end
+    if (self.rented_game && (Date.today - self.rented_game.created_at.to_date).days >= 30.days)  || ( (Date.today - self.subscription_renewals.last.renewed_on.to_date).days >=30.days )
+      SubscriptionRenewal.create(:renewed_on => self.subscription_renewals.last.renewed_on + 30, :user => self)
+      p "first ................"
+    else
+      p "Second ................"
+      SubscriptionRenewal.create(:renewed_on => Date.today, :user => self) if subscription_renewals.blank?
     end
-    self.update_attribute(:is_active, true)
+    self.update_attribute(:is_active, true) if is_active == false
   end
   
   def create_reset_code

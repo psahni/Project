@@ -3,40 +3,39 @@
      <p>User Listing</p>
    </div>
 	<%= will_paginate @users if params[:page].to_i <= User.count / User.per_page.to_i + 1 %>
-	<div id="pagination_show" ><%= set_paginate_value(User) %></div>
-	<%#Fixme you can use zero? method here%>
+	<div id="pagination_show" ><%= set_paginate_value(User) %></div>	
 	<% if !User.count.zero? && params[:page].to_i <= User.count / User.per_page.to_i + 1 %>
 	<table id="users_list" cellspacing='0'>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Subscribed On</th>
-			<th>Status</th>
-			<th>Renewed On</th>
-		</tr>
-		<% @users.each do |user| %>
-		<tr class="<%= cycle('blue', 'grey') %>">
-			<td><%= link_to user.name, admin_user_path(user) %></td>
-			<td><%= mail_to user.email %></td>
-			<td><%= user.subscribed_on ? user.subscribed_on.strftime("%d-%m-%Y") : "Not activated" %></td>
-			<td class="active">
-			<% if user.is_active %>
-				<%= link_to 'Deactivate', deactivate_account_admin_user_path(user) %>
-			<% else %>
-				<% if user.subscribed_on %>
-					<%= link_to 'Renew', renew_subscription_admin_user_path(user) %>
-				<% else %>
-					<%= link_to 'Activate', activate_account_admin_user_path(user) %>
-			  <% end %>
-			<% end %>
-			</td>
-			<td class="active">
-			<% if !user.subscription_renewals.blank? %>
-					<%= user.subscription_renewals.last.renewed_on.strftime("%d-%m-%Y") %>
-			<% end %>
-			</td>
-		</tr>	
-		<% end %>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subscribed On</th>
+            <th>Status</th>
+            <th>Renewed On</th>
+          </tr>
+          <% @users.each do |user| %>
+          <tr class="<%= cycle('blue', 'grey') %>">
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= mail_to user.email %></td>
+            <td><%= user.subscribed_on ? user.subscribed_on.strftime("%d-%m-%Y") : "Not activated" %></td>
+            <td class="active">
+              <% if user.is_active %>
+                <%= link_to 'Deactivate', deactivate_account_admin_user_path(user), :confirm => "Are you sure? " %>
+              <% else %>
+                <% if user.subscribed_on %>
+                  <%= link_to 'Renew', renew_subscription_admin_user_path(user), :confirm => "Are you sure?" %>
+                <% else %>
+                  <%= link_to 'Activate', activate_account_admin_user_path(user), :confirm => "Are you sure?" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="active">
+              <% if !user.subscription_renewals.blank? %>
+                <%= user.subscription_renewals.last.renewed_on.strftime("%d-%m-%Y") %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
 	</table>
 	<% end %>
 	<%= will_paginate @users if params[:page].to_i <= User.count / User.per_page.to_i + 1 %>
