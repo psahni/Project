@@ -5,9 +5,10 @@ ActionController::Routing::Routes.draw do |map|
                          :collection => {:dashboard => :get}           
   map.resource :session
   map.resources :games, :member => {:shortlist => :get, :grab => :get, 
-                                    :grab_page => :get, :remove_shortlisted_game => :get},
-                                    :collection => {:search => :any}
-                                    
+                                    :grab_page => :get, :remove_shortlisted_game => :get,
+                                    :mark_favorite => :post},
+                                    :collection => {:search => :any, :favorite_games => :get}
+  map.favorite_games '/games/favorite_games', :controller => 'games', :action => :favorite_games
   map.browse_by_category '/games/category/:category', :controller => "games", :action => 'browse_by_category'
   map.browse_by_platform '/games/platform/:platform', :controller => "games" , :action => 'browse_by_platform'
 

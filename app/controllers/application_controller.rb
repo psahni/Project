@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
 
   def browse_by_platform
     @games = paginate(Game.browse_by_platform(params[:platform])) 
-   rescue
+  rescue
     redirect_with_flash(:notice, "No game found.",games_path)
   end
   
   def browse_by_category
     @games = paginate(Game.browse_by_category(params[:category]))
-   rescue
+  rescue
     redirect_with_flash(:notice, "No game found.",games_path)
   end
 
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def already_logged_in
-      redirect_to games_path if logged_in?
+    redirect_to games_path if logged_in?
   end
 
   def last_uri

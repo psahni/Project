@@ -91,14 +91,14 @@ class User < ActiveRecord::Base
   end
   
   def renewed
+    self.update_attribute(:is_active, true) if is_active == false
     if (self.rented_game && (Date.today - self.rented_game.created_at.to_date).days >= 30.days)  || ( (Date.today - self.subscription_renewals.last.renewed_on.to_date).days >=30.days )
       SubscriptionRenewal.create(:renewed_on => self.subscription_renewals.last.renewed_on + 30, :user => self)
-      p "first ................"
+      return true
     else
-      p "Second ................"
-      SubscriptionRenewal.create(:renewed_on => Date.today, :user => self) if subscription_renewals.blank?
+      return subscription_renewals.blank? && SubscriptionRenewal.create(:renewed_on => Date.today, :user => self) ? true : false
     end
-    self.update_attribute(:is_active, true) if is_active == false
+    false
   end
   
   def create_reset_code

@@ -1089,7 +1089,7 @@ table#users_list td{
 
 
 #zoom_content form input[type=submit]{
-	margin:0 188px 0 0;
+	margin-left: 10px;
 }
 
 ul.sub_nav_cat{
@@ -1143,3 +1143,12 @@ ul.sub_nav_my{
 .pagi{
 	overflow:hidden;
 }
+
+.send_mail_link{
+    cursor: pointer;
+    font-size: 10px;
+}
+.send{
+    margin-left: 10px !important;
+}
+

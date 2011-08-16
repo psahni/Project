@@ -11,7 +11,7 @@
             <th>Email</th>
             <th>Subscribed On</th>
             <th>Status</th>
-            <th>Renewed On</th>
+            <th>Renewed Upto</th>
           </tr>
           <% @users.each do |user| %>
           <tr class="<%= cycle('blue', 'grey') %>">
@@ -25,7 +25,7 @@
                 <% if user.subscribed_on %>
                   <%= link_to 'Renew', renew_subscription_admin_user_path(user), :confirm => "Are you sure?" %>
                 <% else %>
-                  <%= link_to 'Activate', activate_account_admin_user_path(user), :confirm => "Are you sure?" %>
+                  <%= link_to 'Activate', activate_account_admin_user_path(user), :confirm => "Are you sure?n" %>
                 <% end %>
               <% end %>
             </td>
@@ -34,10 +34,36 @@
                 <%= user.subscription_renewals.last.renewed_on.strftime("%d-%m-%Y") %>
               <% end %>
             </td>
+            <td>
+              <%=link_to "Send Mail", '#send_mail_box', :onclick => "lightbox()",
+                                                       :class => 'send_mail_link',
+                                                       :content => user.email
+              %>
+            </td>
           </tr>
           <% end %>
 	</table>
 	<% end %>
 	<%= will_paginate @users if params[:page].to_i <= User.count / User.per_page.to_i + 1 %>
-
 </div>
+<div id ="send_mail_box" style="display:none">
+  <% form_tag '', {:id => 'mail_form'} do %>
+  <p>
+    <label for="email">Email</label><br/>
+    To: <span></span>
+  </p>
+  <p>
+    <label for="message">Message</label>
+    <%=text_area_tag "message"%><br/>
+     <%=submit_tag "Send", :class => 'send'%>
+  </p>
+  
+  <% end  %>
+</div>
+<script type ="text/javascript">
+ $('.send_mail_link').click(function(e){
+   $("#mail_form span").html($(this).attr('content'));
+   e.preventDefault();
+   return false;
+ });
+</script>

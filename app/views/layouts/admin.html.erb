@@ -18,34 +18,6 @@
   <%= javascript_include_tag 'slider' %>
   <%= javascript_include_tag 'fancyzoom.min' %>
 
-
-
-  <script type="text/javascript">
-
-  jQuery('#navbar li').each(function(){
-    this.onclick=function(event) {        
-      jQuery(".active").removeClass( "active");
-      jQuery(this).addClass("active");         
-    }
-  });
-
-  jQuery(document).ready(function() {
-
-    jQuery('#medium_box_link').fancyZoom({width:400, height:50});
-
-  });               
-  function lightbox(){
-
-    document.getElementById('jquery-overlay').style.display='block';
-
-  }
-  function lightboxclose(){
-
-    document.getElementById('jquery-overlay').style.display='none';
-
-  }
-  </script>
-
 </head>
 <body>
   <div id="background">
@@ -153,3 +125,28 @@
       </div>  
     </body>
     </html>
+
+
+
+  <script type="text/javascript">
+
+  jQuery('#navbar li').each(function(){
+    this.onclick=function(event) {
+      jQuery(".active").removeClass( "active");
+      jQuery(this).addClass("active");
+    }
+  });
+
+  jQuery(document).ready(function() {
+    jQuery('#medium_box_link').fancyZoom({width:400, height:50});
+    jQuery('.send_mail_link').fancyZoom({width:400, height:50});
+  });
+  function lightbox(){
+    document.getElementById('jquery-overlay').style.display='block';
+  }
+  function lightboxclose(){
+
+    document.getElementById('jquery-overlay').style.display='none';
+
+  }
+  </script>
