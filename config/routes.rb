@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :games, :member => {:shortlist => :get, :grab => :get, 
                                     :grab_page => :get, :remove_shortlisted_game => :get,
-                                    :mark_favorite => :post},
+                                    :mark_favorite => :post, :remove_favorite_game => :delete},
                                     :collection => {:search => :any, :favorite_games => :get}
   map.favorite_games '/games/favorite_games', :controller => 'games', :action => :favorite_games
   map.browse_by_category '/games/category/:category', :controller => "games", :action => 'browse_by_category'

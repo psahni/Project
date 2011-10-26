@@ -4,11 +4,21 @@ class Game < ActiveRecord::Base
   belongs_to :age_category
   has_and_belongs_to_many :categories,  :join_table => 'categories_games'
   has_many :games_users, :dependent => :destroy
-  has_many :users_who_shortlisted, :through => :games_users, :source => :user, :conditions => ["status = ?", RENTING_STATUS[:shortlisted]]
-  has_many :users_who_grabbed, :through => :games_users, :source => :user, :conditions => ["status = ?", RENTING_STATUS[:grabbed]]
-  has_many :notified_users, :through => :games_users, :source => :user, :conditions => ["status = ?", RENTING_STATUS[:notified]] 
-  has_many :users_who_rented, :through => :games_users, :source => :user, :conditions => ["status = ?", RENTING_STATUS[:rented]]
-  has_many :subscribed_users, :through => :games_users, :source => :user, :conditions => ["status = ?", RENTING_STATUS[:subscribed]]  
+  has_many :users_who_shortlisted, :through => :games_users, 
+                                   :source => :user,
+                                   :conditions => ["status = ?", RENTING_STATUS[:shortlisted]]
+  has_many :users_who_grabbed, :through => :games_users, 
+                               :source => :user,
+                               :conditions => ["status = ?", RENTING_STATUS[:grabbed]]
+  has_many :notified_users, :through => :games_users, 
+                            :source => :user,
+                            :conditions => ["status = ?", RENTING_STATUS[:notified]]
+  has_many :users_who_rented, :through => :games_users, 
+                              :source => :user,
+                              :conditions => ["status = ?", RENTING_STATUS[:rented]]
+  has_many :subscribed_users, :through => :games_users, 
+                              :source => :user,
+                              :conditions => ["status = ?", RENTING_STATUS[:subscribed]]
   has_many :users, :through => :games_users, :uniq => true
 
   cattr_reader :per_page
@@ -47,7 +57,7 @@ class Game < ActiveRecord::Base
   end
 
   def to_param
-   "#{id}-#{name}" 
+   "#{id}-#{name}".gsub(/\s/,'-')
   end
   
   def available_for_shortlisting

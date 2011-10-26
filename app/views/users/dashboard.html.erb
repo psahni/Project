@@ -40,8 +40,7 @@
     <%current_user.shortlisted_games.each do |sgame| %>
     <div id = "game_<%=sgame.id%>" class="shortlisted_games_list">
       <p><%=link_to sgame.name, game_path(sgame)%>
-       <%=link_to image_tag("cross.png",:size => "13x13",
-        :alt => "delete",:title => "delete"),
+       <%=link_to image_tag("cross.png",:size => "13x13",:alt => "delete",:title => "delete"),
         remove_shortlisted_game_game_path(sgame.id)%></p>
       <div class="dashboard_game_image"><%=link_to (image_tag sgame.image.url(:icon)), game_path(sgame) %></div>
     </div>
@@ -51,4 +50,15 @@
     <%end%>
   </div>   
   <div class="one_col_bottom">&nbsp;</div>
+</div>
+<div class="one_col">
+  <div class="one_col_top">&nbsp;</div>
+  <div class="one_col_content shortlisted_games">
+    <h5>Favorite Games:</h5>
+    <% unless current_user.favorite_games.blank? %>
+      <% current_user.favorite_games.each do  |game| %>
+        <%=link_to game.name, game%> | <%=link_to 'remove', remove_favorite_game_game_path(game), :method => :delete%> <br/>
+      <% end %>
+    <% end %>
+  </div>
 </div>

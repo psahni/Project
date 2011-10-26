@@ -19,3 +19,4 @@ mkmf.log
 */mkmf.log
 vendor/.DS_Store
 vendor/plugins/.DS_Store
+nbproject/

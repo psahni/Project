@@ -81,4 +81,11 @@ class GamesController < ApplicationController
     redirect_with_flash(:notice, "You have successfully removed #{@game.name} from your shortlisted games list.", dashboard_users_path)
   end
 
+  def remove_favorite_game
+    @game = current_user.favorite_games.find params[:id]
+    if current_user.favorite_games.delete(@game)
+      redirect_with_flash(:notice, "You have successfully removed #{@game.name} from your favorite game list.", dashboard_users_path)
+    end
+  end
+
 end

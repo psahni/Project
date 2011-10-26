@@ -38,3 +38,10 @@ Steps to run Gamesite on your system:
 9.rake task for creating 20 games
   * rake db:inital
   * Its path is ../tasks/lib/initial_data.rake
+
+10. Generate class diagrams with railroad
+
+    * gem install railroad
+    * railroad -a -i -p -o models.dot -M [ -a: all, -i: inheritance, -p: plugins, -o: output file, -M: models]
+    * dot -Tpng models.dot > models.png  [ png format]
+
