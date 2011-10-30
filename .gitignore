@@ -5,8 +5,6 @@ config/database.yml
 config/development.sphinx.conf
 tmp/*/*
 .log
-public/user
-public/system
 *~
 .DS_Store
 public/.DS_Store
