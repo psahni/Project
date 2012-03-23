@@ -57,6 +57,16 @@ class SubscriberMailer < ActionMailer::Base
    @subject = "Your subscription has been cancelled."
  end
  
+ def send_user_mail(user, message)
+   @recipients = user.email
+   @sent_on = Time.now
+   @body = message
+   @user = user
+   @subject = "[gamesite] Admin has sent you a message"
+   @from = "admin@gamesonrent.in"
+   @content_type = 'text/html'
+ end
+ 
  def setup_email(user)
    @recipients = user.email
    @sent_on = Time.now

@@ -35,9 +35,8 @@
               <% end %>
             </td>
             <td>
-              <%=link_to "Send Mail", '#send_mail_box', :onclick => "lightbox()",
-                                                       :class => 'send_mail_link',
-                                                       :content => user.email
+              <%=link_to_remote "Send Mail", :url => send_mail_form_admin_user_path(user, :format => :js), :method => :get,:class => 'send_mail_link', :rel => 'facebox',
+:content => user.email
               %>
             </td>
           </tr>
@@ -46,24 +45,13 @@
 	<% end %>
 	<%= will_paginate @users if params[:page].to_i <= User.count / User.per_page.to_i + 1 %>
 </div>
-<div id ="send_mail_box" style="display:none">
-  <% form_tag '', {:id => 'mail_form'} do %>
-  <p>
-    <label for="email">Email</label><br/>
-    To: <span></span>
-  </p>
-  <p>
-    <label for="message">Message</label>
-    <%=text_area_tag "message"%><br/>
-     <%=submit_tag "Send", :class => 'send'%>
-  </p>
-  
-  <% end  %>
-</div>
+<div id='mail_form'></div>
 <script type ="text/javascript">
- $('.send_mail_link').click(function(e){
+/* $('a.send_mail_link').click(function(e){
    $("#mail_form span").html($(this).attr('content'));
+   $('#mail_form').action
    e.preventDefault();
    return false;
- });
+ });*/
 </script>
+

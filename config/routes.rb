@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
     admin.resources :games
-    admin.resources :users, :member => {:activate_account => :any, :deactivate_account => :get, :renew_subscription => :any, :rent_game => :get, :return_game => :get}, 
+    admin.resources :users, :member => {:activate_account => :any, :deactivate_account => :get, :renew_subscription => :any, :rent_game => :get, :return_game => :get, :send_mail => :post, :send_mail_form => :get }, 
                             :collection => {:search => :get,
                                             :send_notifications => :get}
 

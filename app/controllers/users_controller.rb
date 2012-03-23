@@ -59,7 +59,8 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
+  
   private
  
   def dashboard;end

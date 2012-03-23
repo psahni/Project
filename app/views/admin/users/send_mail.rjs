@@ -1,0 +1,7 @@
+if @message_blank == true
+  page['error'].html('Please fill out some message')
+else
+  page << %( $('div#flash_notice').remove() ) 
+  page << %( $("<div id= 'flash_notice'/>").html('Mesage has been successfully sent').insertAfter('#navbar') )
+  page << %( $.facebox.close() )
+end

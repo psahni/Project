@@ -88,6 +88,26 @@ class Admin::UsersController < ApplicationController
     end
   end
   
+  def send_mail
+    @user = User.find_by_id(params[:id])   
+
+    if params[:message].blank?
+      @message_blank = true
+    else
+      @message_blank = false
+      SubscriberMailer.deliver_send_user_mail(@user, params[:message])
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end 
+  end
+
+  def send_mail_form
+      @user = User.find_by_id(params[:id])  
+  end
+  
   def send_notifications
     GamesUser.remove_those_who_grabbed_2days_ago_notify_those_who_shortlisted
     GamesUser.notified_but_not_grabbed

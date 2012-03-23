@@ -1,0 +1,5 @@
+
+page << %{
+  jQuery('#mail_form').html("#{ escape_javascript(render :partial => 'send_mail_form')}")
+  jQuery.facebox({ div: '#send_mail_box' })
+}

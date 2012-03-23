@@ -1,0 +1,15 @@
+<div id ="send_mail_box" style='display:none;'>
+  <% form_remote_tag :url =>  send_mail_admin_user_path( @user ), :html => {:id => 'mail_form'} do %>
+  <p id='error'></p>
+  <p>
+    <label for="email">Email</label><br/><br/>
+    To: <span><%=@user.email%></span>
+  </p>
+  <p>
+    <label for="message">Message</label>
+    <%=text_area_tag "message", '',:rows =>  5, :cols => 30%><br/>
+     <%=submit_tag "Send", :class => 'send'%>
+  </p>
+  <% end  %>
+</div>
+
