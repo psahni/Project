@@ -19,7 +19,7 @@ class SubscriberMailer < ActionMailer::Base
   def reset_notification(user)
     setup_email(user)
     @subject = "Link to reset your password"
-    @body[:url] = "http://ajax4u.com/reset/#{user.reset_code}"
+    @body[:url] = "http://gamesonrent.in/reset/#{user.reset_code}"
     @body[:user] = user
   end
   
