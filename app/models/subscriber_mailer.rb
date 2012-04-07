@@ -71,7 +71,7 @@ class SubscriberMailer < ActionMailer::Base
    @recipients = user.email
    @sent_on = Time.now
    @body = {:user => user}
-   @from = "admin@ajax4u.com"
+   @from = "admin@gamesonrent.in"
    @content_type = 'text/html'
   end
   

@@ -4,7 +4,7 @@
   <title>Gamesite</title>
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag 'reset.css' %>
-  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery', 'application' %>
   <%= javascript_include_tag 'jquery-ui' %>
   <%= javascript_include_tag 'jrails' %>
   <%= javascript_include_tag 'slider' %>
@@ -19,18 +19,18 @@
     </script>
     <% end %>
   <script type="text/javascript">
-    jQuery(document).ready(function() {
-                  jQuery(".btn-slide").click(function(){
+     jQuery(document).ready(function() {
+        jQuery(".btn-slide").click(function(){
         jQuery("#panel").slideToggle("slow");
         jQuery(this).toggleClass("act"); return false;
       });
-            jQuery('#navbar li').each(function(){
-                          this.onclick=function(event) {
-                          jQuery(".active").removeClass( "active");
-                                  jQuery(this).addClass("active");
-                          }
-                  });
-          });
+      jQuery('#navbar li').each(function(){
+          this.onclick=function(event) {
+          jQuery(".active").removeClass( "active");
+          jQuery(this).addClass("active");
+        }
+      });
+    });
   </script>
 </head>
 <body>
